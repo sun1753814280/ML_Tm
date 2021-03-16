@@ -19,7 +19,7 @@ site_inx = train_data(:,11);
 k = 10;
 
 % set the indices for K-fold CV
-indices = crossvalind('Kfold', length(p_train), k); % 5-fold CV
+indices = crossvalind('Kfold', length(p_train), k); % 10-fold CV
 
 % initialize residual
 rsd = [];
@@ -31,7 +31,7 @@ for i = 1:k
     disp(['k-fold times: ',num2str(i)]);
     
     % get the indeces of K-fold CV
-    test_id = (indices == 1); train_id =~ test_id;
+    test_id = (indices == i); train_id =~ test_id;
     
     % get the train and test data for K-fold CV
     p_cv_train = p_train(train_id,:);
